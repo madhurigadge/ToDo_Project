@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+</head>
+
+<body>
+    
+    <div class="signup-login">
+        <div class=" signup-box scr">
+            <div class="heading">ToDo List</div>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="title" value={{obj.title}}>
+                <input type="hidden" name="srno" value={{obj.srno}}>
+                
+                <input class="submit-button" type="submit" value="Update Task">
+
+            </form>
+
+            {% for todo in res %}
+            <div>
+                <h5>{{todo.srno}}</h5>
+                <p>{{todo.title}}</p>
+            
+
+
+
+                <div>
+                 
+                    <a href=" /delete_todo/{{todo.srno}} "><i class="fa-solid fa-trash"></i></a>
+
+                    </i>
+                </div>
+            </div>
+                 {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
